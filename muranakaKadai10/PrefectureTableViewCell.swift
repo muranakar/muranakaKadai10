@@ -11,8 +11,16 @@ class PrefectureTableViewCell: UITableViewCell {
     @IBOutlet private weak var prefectureNameLabel: UILabel!
     @IBOutlet private weak var prefectureNumLabel: UILabel!
 
-    func prefectureNameAndNumSet(prefectureName: String, prefectureNum: String) {
+    private static let colors: [UIColor] = [
+        Colors.lightRed,
+        Colors.lightBlue,
+        Colors.lightYellow
+    ]
+
+    func configure(prefectureName: String, index: Int) {
         prefectureNameLabel.text = prefectureName
-        prefectureNumLabel.text = prefectureNum
+        prefectureNumLabel.text = "\(index + 1)番目の都道府県です"
+
+        backgroundColor = Self.colors[index % Self.colors.count]
     }
 }
