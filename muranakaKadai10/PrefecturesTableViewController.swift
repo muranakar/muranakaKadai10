@@ -27,22 +27,14 @@ class PrefecturesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =
-            tableView.dequeueReusableCell(withIdentifier: "PrefectureCell",
-                                          for: indexPath) as! PrefectureTableViewCell // swiftlint:disable:this force_cast
-        cell.prefectureNameAndNumSet(prefectureName: prefectures[indexPath.row],
-                                     prefectureNum: "\(indexPath.row + 1)番目の都道府県です")
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "PrefectureCell",
+            for: indexPath
+        ) as! PrefectureTableViewCell // swiftlint:disable:this force_cast
 
-        switch indexPath.row % 3 {
-        case 0:
-            cell.backgroundColor = Colors.ligtRed
-        case 1:
-            cell.backgroundColor = Colors.ligtBlue
-        case 2:
-            cell.backgroundColor = Colors.ligtYellow
-        default:
-            break
-        }
+        cell.configure(prefectureName: prefectures[indexPath.row],
+                       index: indexPath.row)
+
         return cell
     }
 }
